@@ -1,0 +1,62 @@
+credits = 200
+print("Welcome To Horse Race Simulator!")
+while True:
+    print("You have", credits, "credits left")
+    print("Choose your horse: -Bolt- , -Nightmare- , -Blaze- or -Nugget-.")
+    print("Bolt chances : 2/1")
+    print("Nightmare chances : 10/1")
+    print("Blaze chances : 5/1")
+    print("Nugget chances : 5/1")
+    horse = input("Which horse do you want to bet on?: ")
+    if horse == "Bolt":
+        print("You have chosen Bolt!")
+    elif horse == "Nightmare":
+        print("You have chosen Nightmare!")
+    elif horse == "Blaze":
+        print("You have chosen Blaze!")
+    elif horse == "Nugget":
+        print("You have chosen Nugget")
+    else:
+        print("That is not a horse!")
+        quit()
+    print(" ")
+    print("You have",credits, "credits")
+    spending = input("How much do you want to bet on your horse?: ")
+    spending = int(spending)
+    credits = int(credits)
+    print("You bet", spending, "credits on", horse)
+    print("You have", credits-spending, "credits left")
+    credits = credits - spending
+    print("The race is starting!")
+    import random
+    randnum = random.randint(1, 10)
+    if randnum == 10:
+        print("Nightmare won!")
+        if horse == "Nightmare":
+            print("Your horse won the race!")
+            print("You now have", credits + spending*10, "credits")
+        else:
+            print("your horse lost the race")
+    elif randnum == 1 or 2 or 3 or 4 or 5:
+        print("Bolt won!")
+        if horse == "Bolt":
+            print("your horse won the race!")
+            print("you now have", credits + spending*2, "credits")
+            credits = credits + spending*2
+        else:
+            print("your horse lost the race")
+    elif randnum == 6 or 7:
+        print("Blaze won the race!")
+        if horse == "Blaze":
+            print("Your horse won the race!")
+            print("You now have", credits + spending*5, "credits")
+            credits = credits + spending*5
+    else:
+        print("Nugget won the race!")
+        if horse == "Nugget":
+            print("Your horse won the race!")
+            print("you now have", credits + spending*5, "credits left")
+        credits = credits-spending
+    print(randnum)
+    if credits <= 0:
+        break
